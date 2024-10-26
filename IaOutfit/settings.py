@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'Apps.OutfitSaving',
     'Apps.Accounts',
     'Apps.Wardrobe',
+    'Apps.LandingPage',
     'corsheaders',
 ]
 

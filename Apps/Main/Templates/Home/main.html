@@ -1,113 +1,101 @@
-{% extends 'components/Base.html' %}
-{% load static %}
-{% block content %}
-<link rel="stylesheet" href="{% static 'Assets/css/main.css' %}">
-<div class="col-lg-">
-  <div class="d-flex justify-content-between align-items-center px-3 mb-3"></div>
-</div>
-<div class="card-transparent bg-white rounded mb-4">
-  <div class="card-header">
-    <div class="d-flex justify-content-between">
-      <h5 class="heading-title">Filtros</h5>
-      <button
-        class="button_add"
-        type="button"
-        style="height: 40px; width: 210px"
-        onclick="location.href='{% url 'Wardrobe:upload_image' %}'"
+{% extends 'components/Pages.html' %} {% block header %}
+<header class="hero">
+  <nav class="nav container container--hero">
+    <ul class="nav justify-content-end">
+      <li class="nav-item"><a class="nav-link active">Active</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Disabled</a></li>
+    </ul>
+  </nav>
+</header>
+{%endblock %} {% block hero %}
+<!-- Header-->
+<header class="bg-dark py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder">Plantas</h1>
+      <p class="lead fw-normal text-white-50 mb-0">
+        Descriipcion de las plantas ..
+      </p>
+    </div>
+  </div>
+</header>
+{% endblock %} {% block catalogo %}
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <!-- Usar row para alinear horizontalmente -->
+
+    <div class="col-md-5">
+      <!-- Ajusta el tamaño de la columna según sea necesario -->
+      <a
+        href="{% url 'Main:detail_prenda' %}"
+        style="text-decoration: none; color: inherit"
       >
-        <span class="button__text">Agregar prenda</span>
-        <span class="button__icon" style="height: 183px; width: 61px; left: 24%">
-          <svg
-            class="svg"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
+        <!-- Enlace a la URL de detalle -->
+        <div
+          class="card text-center py-5 mt-5"
+          style="background: #2cb5a0; border: 4px solid #7cdacc"
+        >
+          <div
+            class="user-picture rounded-circle border"
+            style="overflow: hidden; width: 5rem; height: 5rem; margin: auto"
           >
-            <line x1="12" x2="12" y1="5" y2="19"></line>
-            <line x1="5" x2="19" y1="12" y2="12"></line>
-          </svg>
-        </span>
-      </button>
-    </div>
-  </div>
-  <div class="card-header">
-    <div class="radio-inputs" id="filter-buttons">
-      <label class="radio">
-        <input type="radio" name="radio" value="Todos" checked="">
-        <span class="name">Todos</span>
-      </label>
-      <label class="radio">
-        <input type="radio" name="radio" value="Ankle boot">
-        <span class="name">Ankle boot</span>
-      </label>
-      <label class="radio">
-        <input type="radio" name="radio" value="Bag">
-        <span class="name">Bag</span>
-      </label>
-      <label class="radio">
-        <input type="radio" name="radio" value="Coat">
-        <span class="name">Coat</span>
-      </label>
-      <label class="radio">
-        <input type="radio" name="radio" value="Dress">
-        <span class="name">Dress</span>
-      </label>
-      <label class="radio">
-        <input type="radio" name="radio" value="Pullover">
-        <span class="name">Pullover</span>
-      </label>
-      <label class="radio">
-        <input type="radio" name="radio" value="Sandal">
-        <span class="name">Sandal</span>
-      </label>
-      <label class="radio">
-        <input type="radio" name="radio" value="Shirt">
-        <span class="name">Shirt</span>
-      </label>
-      <label class="radio">
-        <input type="radio" name="radio" value="Sneaker">
-        <span class="name">Sneaker</span>
-      </label>
-      <label class="radio">
-        <input type="radio" name="radio" value="T-shirt">
-        <span class="name">T-shirt</span>
-      </label>
-      <label class="radio">
-        <input type="radio" name="radio" value="Trouser">
-        <span class="name">Trouser</span>
-      </label>
-    </div>
-  </div>
-</div>
-<div class="card-header swiper-container d-slider2">
-    <div class="card-group imagen-container" id="prendas-list">
-      {% if prendas %}
-        {% for prenda in prendas %}
-          <div class="col-md-3 mb-3 prenda-item imagen-container prenda_main" data-category="{{ prenda.category }}" style="flex: 1 0 21%; max-width: 21%; margin: 10px;">
-            <div class="card mx-3" style="width: 100%; height: 100%;">
-                <a href="{% url 'Main:detail_prenda' prenda.id %}">
-                  <img
-                    src="{{ prenda.garment.url }}"
-                    alt="Image of {{ prenda.category }}"
-                    class="card-img-top prenda-img"
-                    style="max-width: 1000%; max-height: 1000%; object-fit: contain; margin-rigth:100px;"
-                  />
-                </a>
-            </div>
+            <svg
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+              style="width: 2.5rem; fill: #fff"
+            >
+              <path
+                d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"
+              ></path>
+            </svg>
           </div>
-        {% endfor %}
-      {% else %}
-        <div class="col-md-12" id="no-prendas-message">
-          <p class="text-center">No ha subido ninguna prenda.</p>
+          <p
+            class="name-client mt-3 mb-1 fw-bold"
+            style="font-size: 18px; color: #fff"
+          >
+            CATALOGO 1
+            <span class="d-block fw-light" style="font-size: 16px"
+              >no se que poner</span
+            >
+          </p>
         </div>
-      {% endif %}
+      </a>
     </div>
+
+    <div class="col-md-5">
+      <!-- Ajusta el tamaño de la columna según sea necesario -->
+      <div
+        class="card text-center py-5 mt-5"
+        style="background: #2cb5a0; border: 4px solid #7cdacc"
+      >
+        <div
+          class="user-picture rounded-circle border"
+          style="overflow: hidden; width: 5rem; height: 5rem; margin: auto"
+        >
+          <svg
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+            style="width: 2.5rem; fill: #fff"
+          >
+            <path
+              d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"
+            ></path>
+          </svg>
+        </div>
+        <p
+          class="name-client mt-3 mb-1 fw-bold"
+          style="font-size: 18px; color: #fff"
+        >
+          CATALOGO 2
+          <span class="d-block fw-light" style="font-size: 16px"
+            >no se que poner</span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 
-<script src="{% static 'Assets/js/filtro_prendas.js' %}"></script>
-{% endblock %}
+{% endblock%} {% block benefits %} {% endblock%} {% block sponsor %} {%endblock%} {% block statistics %} {% endblock%} {% block footer %} {% endblock%}

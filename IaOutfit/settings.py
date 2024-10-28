@@ -44,10 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'IaOutfit',
     'Apps.Main',
-    'Apps.OutfitGeneration',
-    'Apps.OutfitSaving',
     'Apps.Accounts',
-    'Apps.Wardrobe',
     'Apps.LandingPage',
     'corsheaders',
 ]

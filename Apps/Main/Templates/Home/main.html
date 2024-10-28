@@ -1,13 +1,25 @@
 {% extends 'components/Pages.html' %} {% block header %}
 <header class="hero">
-  <nav class="nav container container--hero">
-    <ul class="nav justify-content-end">
-      <li class="nav-item"><a class="nav-link active">Active</a></li>
+  <nav
+    class="nav container container--hero d-flex justify-content-between align-items-center"
+  >
+    <!-- Menú de navegación -->
+    <ul class="nav">
+      <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
       <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
       <li class="nav-item"><a class="nav-link" href="#">Disabled</a></li>
+      <!-- Ícono del carrito de compras -->
     </ul>
+    <form class="d-flex">
+      <button class="btn btn-outline-dark" type="submit">
+        <i class="bi-cart-fill me-1"></i>
+
+        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+      </button>
+    </form>
   </nav>
 </header>
+
 {%endblock %} {% block hero %}
 <!-- Header-->
 <header class="bg-dark py-5">
@@ -29,7 +41,7 @@
     <div class="col-md-5">
       <!-- Ajusta el tamaño de la columna según sea necesario -->
       <a
-        href="{% url 'Main:detail_prenda' %}"
+        href="{% url 'Main:product_list' %}"
         style="text-decoration: none; color: inherit"
       >
         <!-- Enlace a la URL de detalle -->
@@ -98,4 +110,6 @@
   </div>
 </div>
 
-{% endblock%} {% block benefits %} {% endblock%} {% block sponsor %} {%endblock%} {% block statistics %} {% endblock%} {% block footer %} {% endblock%}
+{% endblock%} {% block benefits %} {% endblock%} {% block sponsor %}
+{%endblock%} {% block statistics %} {% endblock%} {% block footer %}
+{%endblock%}

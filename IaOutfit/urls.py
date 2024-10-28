@@ -24,9 +24,6 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Apps.LandingPage.urls',namespace="LandingPage") ), 
-    path('saving/',include('Apps.OutfitSaving.urls',namespace="OutfitSaving") ),
     path('Main/',include('Apps.Main.urls',namespace="Main") ),
-    path('OutfitGeneration/',include('Apps.OutfitGeneration.urls',namespace="OutfitGeneration") ),
     path('Account',include('Apps.Accounts.urls',namespace="Account") ),
-    path('Wardrobe/',include('Apps.Wardrobe.urls',namespace="Wardrobe") ),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

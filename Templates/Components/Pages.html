@@ -18,6 +18,7 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="{% static 'Assets/css/pages.css' %}" />
+    <link rel="stylesheet" href="{% static 'Assets/css/loader.css' %}" />
     <link
       rel="stylesheet"
       href="{% static 'Assets/css/landingPage/button.css' %}"
@@ -33,224 +34,247 @@
     />
   </head>
   <body>
-    {% block header %}
-    <header class="hero">
-      <nav class="nav container container--hero">
-        <img src="{% static 'Assets/images/Logo.svg' %}" class="nav__logo" />
-        <ul class="nav justify-content-end">
-          <li class="nav-item"><a class="nav-link active">??</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">??</a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'Account:login' %}">Log In</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    {% endblock %} {% block hero %}
-    <section class="hero__main container container--hero">
-      <article class="hero__texts">
-        <h1 class="hero__title">EcoFertil</h1>
-        <p class="hero__paragraph">
-          Descubre nuestra amplia variedad de productos agrícolas, fertilizantes
-          y herramientas de alta calidad para potenciar tu cosecha y cuidar de
-          tus cultivos.
-        </p>
-        <a href="https://alexcgdesign.com/cursocss" class="hero__cta">??</a>
-      </article>
-      <figure class="hero__figure">
-        <img
-          src="{% static 'Assets/images/hero-img.png' %}"
-          class="hero__img"
-        />
-      </figure>
-    </section>
-    {% endblock %} {% block catalogo %}
-    <section
-      class="Planta pt-5 pb-5"
-      id="aprender"
-      style="text-align: center; background-color: #f9f8fe"
-    >
-      <h2 class="subtitle_one">Catálogo de plantas</h2>
-      <div class="sponsor__main container">
-        <article class="learn__article">
-          <img
-            src="{% static 'Assets/images/computer-illustration.png' %}"
-            class="learn__img"
-          />
-          <h2 class="learn__title">Planta 3</h2>
-          <p class="paragraph">Descripcion ....</p>
-        </article>
-        <article class="learn__article">
-          <img
-            src="{% static 'Assets/images/computer-illustration.png' %}"
-            class="learn__img"
-          />
-          <h2 class="learn__title">Planta 3</h2>
-          <p class="paragraph">Descripcion ....</p>
-        </article>
-        <article class="learn__article">
-          <img
-            src="{% static 'Assets/images/computer-illustration.png' %}"
-            class="learn__img"
-          />
-          <h2 class="learn__title">Planta 3</h2>
-          <p class="paragraph">Descripcion ....</p>
-        </article>
-      </div>
-
-      <button
-        onclick="window.location.href='{% url 'Main:Main_list' %}'"
-        class="btn btn-outline-primary position-relative shadow-sm px-4 py-2 mx-3"
-        style="
-          font-size: 18px;
-          letter-spacing: 1px;
-          transition: all 0.5s ease-out;
-          border-radius: 10px;
-        "
-      >
-        Ver Catálogo
-      </button>
-    </section>
-    {% endblock %} {% block benefits %}
-    <section class="container py-5 my-5">
-      <div class="row text-center">
-        <!-- Bloque de Pago Seguro -->
-        <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
-          <div class="d-flex align-items-center flex-column flex-md-row">
-            <div
-              class="icon-circle bg-success text-white d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-3"
-              style="width: 50px; height: 50px; border-radius: 50%"
-            >
-              <i class="bi bi-lock fs-3"></i>
-            </div>
-            <div class="text-center text-md-start">
-              <h4 class="fw-bold">PAGOS SEGUROS</h4>
-              <p class="mb-0">
-                Pagos seguros por medio de transferencia o depósito.
-              </p>
-            </div>
-          </div>
+    <div id="laoderContainer" class="loader">
+      <div class="loader__balls">
+        <div class="loader__balls__group">
+          <div class="ball item1"></div>
+          <div class="ball item1"></div>
+          <div class="ball item1"></div>
         </div>
-
-        <!-- Bloque de Envíos Seguros -->
-        <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
-          <div class="d-flex align-items-center flex-column flex-md-row">
-            <div
-              class="icon-circle bg-success text-white d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-3"
-              style="width: 50px; height: 50px; border-radius: 50%"
-            >
-              <i class="bi bi-box-seam fs-3"></i>
-            </div>
-            <div class="text-center text-md-start">
-              <h4 class="fw-bold">ENVÍOS SEGUROS</h4>
-              <p class="mb-0">
-                Envíos seguros a todo el Ecuador por medio de encomiendas.
-              </p>
-            </div>
-          </div>
+        <div class="loader__balls__group">
+          <div class="ball item2"></div>
+          <div class="ball item2"></div>
+          <div class="ball item2"></div>
         </div>
-
-        <!-- Bloque de Servicio Garantizado -->
-        <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
-          <div class="d-flex align-items-center flex-column flex-md-row">
-            <div
-              class="icon-circle bg-success text-white d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-3"
-              style="width: 50px; height: 50px; border-radius: 50%"
-            >
-              <i class="bi bi-heart fs-3"></i>
-            </div>
-            <div class="text-center text-md-start">
-              <h4 class="fw-bold">SERVICIO GARANTIZADO</h4>
-              <p class="mb-0">Nuestro servicio está garantizado.</p>
-            </div>
-          </div>
+        <div class="loader__balls__group">
+          <div class="ball item3"></div>
+          <div class="ball item3"></div>
+          <div class="ball item3"></div>
         </div>
       </div>
-    </section>
+    </div>
 
-    {% endblock %} {% block sponsor %}
-    <section class="sponsor" id="sponsor">
-      <div class="sponsor__main container">
-        <article class="sponsor__texts">
-          <h1 class="subtitle">
-            ¡Mejora tu cosecha con nuestros fertilizantes!
-          </h1>
-          <p class="paragraph">
-            Descubre nuestros fertilizantes de alta calidad que optimizan el
-            crecimiento de tus cultivos y mejoran la productividad del suelo.
-            Aprovecha las ofertas especiales y dale a tus plantas el cuidado que
-            merecen.
+    <div id="content" style="display: none">
+      {% block header %}
+      <header class="hero">
+        <nav class="nav container container--hero">
+          <img src="{% static 'Assets/images/Logo.svg' %}" class="nav__logo" />
+          <ul class="nav justify-content-end">
+            <li class="nav-item"><a class="nav-link active">??</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">??</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Account:login' %}">Log In</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      {% endblock %} {% block hero %}
+      <section class="hero__main container container--hero">
+        <article class="hero__texts">
+          <h1 class="hero__title">EcoFertil</h1>
+          <p class="hero__paragraph">
+            Descubre nuestra amplia variedad de productos agrícolas,
+            fertilizantes y herramientas de alta calidad para potenciar tu
+            cosecha y cuidar de tus cultivos.
           </p>
-          <a
-            href="https://tu-tienda-agricola.com/fertilizantes"
-            class="sponsor__cta"
-            >Ver fertilizantes</a
-          >
+          <a href="https://alexcgdesign.com/cursocss" class="hero__cta">??</a>
         </article>
-        <figure class="sponsor__figure">
+        <figure class="hero__figure">
           <img
-            src="{% static 'Assets/images/fertilizantes-ilustracion.svg' %}"
-            alt="Fertilizantes para mejorar tus cultivos"
-            class="sponsor__img"
+            src="{% static 'Assets/images/hero-img.png' %}"
+            class="hero__img"
           />
         </figure>
-      </div>
-    </section>
-    {% endblock %} {% block statistics %}
-    <section class="statistics">
-      <div class="statistics__container container">
-        <article class="statistics__item">
-          <h3 class="statistics__title">+4,700</h3>
-          <p class="paragraph">Estudiantes han aprendido CSS desde CERO.</p>
-        </article>
-        <article class="statistics__item">
-          <h3 class="statistics__title">25 HRS.</h3>
-          <p class="paragraph">
-            El curso tiene una duración de más de 25 horas.
-          </p>
-        </article>
-        <article class="statistics__item">
-          <h3 class="statistics__title">807</h3>
-          <p class="paragraph">
-            Estas han sido las reseñas hacia el curso, con un promedio de 4.7
-            estrellas de 5.
-          </p>
-        </article>
-        <a href="https://alexcgdesign.com/cursocss" class="statistics__cta"
-          >Ingresa Ahora</a
-        >
-      </div>
-    </section>
-    {% endblock %} {% block footer %}
-    <footer class="footer" id="footer">
-      <section class="footer__container container">
-        <h2 class="subtitle">¡Hecho con 💜!</h2>
-        <ul class="footer__contact">
-          <li class="footer__item">
-            <a href="#" class="footer__link"
-              ><img
-                src="{% static 'Assets/images/twitter.svg' %}"
-                class="footer__img"
-            /></a>
-          </li>
-          <li class="footer__item">
-            <a href="#" class="footer__link"
-              ><img
-                src="{% static 'Assets/images/instagram.svg' %}"
-                class="footer__img"
-            /></a>
-          </li>
-          <li class="footer__item">
-            <a href="#" class="footer__link"
-              ><img
-                src="{% static 'Assets/images/youtube.svg' %}"
-                class="footer__img"
-            /></a>
-          </li>
-        </ul>
       </section>
-    </footer>
-    {% endblock %}
+      {% endblock %} {% block catalogo %}
+      <section
+        class="Planta pt-5 pb-5"
+        id="aprender"
+        style="text-align: center; background-color: #f9f8fe"
+      >
+        <h2 class="subtitle_one">Catálogo de plantas</h2>
+        <div class="sponsor__main container">
+          <article class="learn__article">
+            <img
+              src="{% static 'Assets/images/computer-illustration.png' %}"
+              class="learn__img"
+            />
+            <h2 class="learn__title">Planta 3</h2>
+            <p class="paragraph">Descripcion ....</p>
+          </article>
+          <article class="learn__article">
+            <img
+              src="{% static 'Assets/images/computer-illustration.png' %}"
+              class="learn__img"
+            />
+            <h2 class="learn__title">Planta 3</h2>
+            <p class="paragraph">Descripcion ....</p>
+          </article>
+          <article class="learn__article">
+            <img
+              src="{% static 'Assets/images/computer-illustration.png' %}"
+              class="learn__img"
+            />
+            <h2 class="learn__title">Planta 3</h2>
+            <p class="paragraph">Descripcion ....</p>
+          </article>
+        </div>
+
+        <button
+          onclick="window.location.href='{% url 'Main:Main_list' %}'"
+          class="btn btn-outline-primary position-relative shadow-sm px-4 py-2 mx-3"
+          style="
+            font-size: 18px;
+            letter-spacing: 1px;
+            transition: all 0.5s ease-out;
+            border-radius: 10px;
+          "
+        >
+          Ver Catálogo
+        </button>
+      </section>
+      {% endblock %} {% block benefits %}
+      <section class="container py-5 my-5">
+        <div class="row text-center">
+          <!-- Bloque de Pago Seguro -->
+          <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
+            <div class="d-flex align-items-center flex-column flex-md-row">
+              <div
+                class="icon-circle bg-success text-white d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-3"
+                style="width: 50px; height: 50px; border-radius: 50%"
+              >
+                <i class="bi bi-lock fs-3"></i>
+              </div>
+              <div class="text-center text-md-start">
+                <h4 class="fw-bold">PAGOS SEGUROS</h4>
+                <p class="mb-0">
+                  Pagos seguros por medio de transferencia o depósito.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bloque de Envíos Seguros -->
+          <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
+            <div class="d-flex align-items-center flex-column flex-md-row">
+              <div
+                class="icon-circle bg-success text-white d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-3"
+                style="width: 50px; height: 50px; border-radius: 50%"
+              >
+                <i class="bi bi-box-seam fs-3"></i>
+              </div>
+              <div class="text-center text-md-start">
+                <h4 class="fw-bold">ENVÍOS SEGUROS</h4>
+                <p class="mb-0">
+                  Envíos seguros a todo el Ecuador por medio de encomiendas.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bloque de Servicio Garantizado -->
+          <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
+            <div class="d-flex align-items-center flex-column flex-md-row">
+              <div
+                class="icon-circle bg-success text-white d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-3"
+                style="width: 50px; height: 50px; border-radius: 50%"
+              >
+                <i class="bi bi-heart fs-3"></i>
+              </div>
+              <div class="text-center text-md-start">
+                <h4 class="fw-bold">SERVICIO GARANTIZADO</h4>
+                <p class="mb-0">Nuestro servicio está garantizado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {% endblock %} {% block sponsor %}
+      <section class="sponsor" id="sponsor">
+        <div class="sponsor__main container">
+          <article class="sponsor__texts">
+            <h1 class="subtitle">
+              ¡Mejora tu cosecha con nuestros fertilizantes!
+            </h1>
+            <p class="paragraph">
+              Descubre nuestros fertilizantes de alta calidad que optimizan el
+              crecimiento de tus cultivos y mejoran la productividad del suelo.
+              Aprovecha las ofertas especiales y dale a tus plantas el cuidado
+              que merecen.
+            </p>
+            <a
+              href="https://tu-tienda-agricola.com/fertilizantes"
+              class="sponsor__cta"
+              >Ver fertilizantes</a
+            >
+          </article>
+          <figure class="sponsor__figure">
+            <img
+              src="{% static 'Assets/images/fertilizantes-ilustracion.svg' %}"
+              alt="Fertilizantes para mejorar tus cultivos"
+              class="sponsor__img"
+            />
+          </figure>
+        </div>
+      </section>
+      {% endblock %} {% block statistics %}
+      <section class="statistics">
+        <div class="statistics__container container">
+          <article class="statistics__item">
+            <h3 class="statistics__title">+4,700</h3>
+            <p class="paragraph">Estudiantes han aprendido CSS desde CERO.</p>
+          </article>
+          <article class="statistics__item">
+            <h3 class="statistics__title">25 HRS.</h3>
+            <p class="paragraph">
+              El curso tiene una duración de más de 25 horas.
+            </p>
+          </article>
+          <article class="statistics__item">
+            <h3 class="statistics__title">807</h3>
+            <p class="paragraph">
+              Estas han sido las reseñas hacia el curso, con un promedio de 4.7
+              estrellas de 5.
+            </p>
+          </article>
+          <a href="https://alexcgdesign.com/cursocss" class="statistics__cta"
+            >Ingresa Ahora</a
+          >
+        </div>
+      </section>
+      {% endblock %} {% block footer %}
+      <footer class="footer" id="footer">
+        <section class="footer__container container">
+          <h2 class="subtitle">¡Hecho con 💜!</h2>
+          <ul class="footer__contact">
+            <li class="footer__item">
+              <a href="#" class="footer__link"
+                ><img
+                  src="{% static 'Assets/images/twitter.svg' %}"
+                  class="footer__img"
+              /></a>
+            </li>
+            <li class="footer__item">
+              <a href="#" class="footer__link"
+                ><img
+                  src="{% static 'Assets/images/instagram.svg' %}"
+                  class="footer__img"
+              /></a>
+            </li>
+            <li class="footer__item">
+              <a href="#" class="footer__link"
+                ><img
+                  src="{% static 'Assets/images/youtube.svg' %}"
+                  class="footer__img"
+              /></a>
+            </li>
+          </ul>
+        </section>
+      </footer>
+      {% endblock %}
+    </div>
+    <script src="{% static 'Assets/js/loader.js' %}"></script>
   </body>
 </html>

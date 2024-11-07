@@ -19,8 +19,8 @@
       <div class="col mb-5">
         <div class="card h-100">
           <!-- Product image-->
-          <a href="{% url 'Main:detail_prenda' %}">
-          <a href="">
+          <a  href="{% url 'Main:detail_prenda' producto.id %}">
+            <a href="">
             <img
               class="card-img-top"
               src="{{ producto.imagen.url }}" 
@@ -39,7 +39,7 @@
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div class="text-center">
-              <a class="btn btn-outline-dark mt-auto" href="">Ver detalles</a>
+              <a class="btn btn-outline-dark mt-auto" href="{% url 'Main:detail_prenda' producto.id %}">Ver detalles</a>
             </div>
           </div>
         </div>

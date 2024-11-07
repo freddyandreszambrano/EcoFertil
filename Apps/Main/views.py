@@ -1,4 +1,5 @@
-from django.views.generic import ListView
+from typing import Any
+from django.views.generic import ListView,DetailView
 from .models import Producto, Categoria
 
 class RopaListView(ListView):
@@ -13,18 +14,24 @@ class RopaListView(ListView):
             {'nombre': 'Chaqueta', 'precio': 100, 'color': 'Negro'}
         ]
 
-class PrendaDetail(ListView):
+class PrendaDetail(DetailView):
+    model = Producto
     template_name = 'Item_details/details.html'
-    context_object_name = 'prendas'
-
-    def get_queryset(self):
-        # Datos de ejemplo para la vista de detalles
-        return [
-            {'nombre': 'Camiseta', 'precio': 20, 'color': 'Rojo', 'descripcion': 'Una camiseta de algodón'},
-            {'nombre': 'Pantalones', 'precio': 50, 'color': 'Azul', 'descripcion': 'Pantalones de mezclilla'},
-            {'nombre': 'Chaqueta', 'precio': 100, 'color': 'Negro', 'descripcion': 'Chaqueta de cuero'}
-        ]
+    context_object_name = 'producto'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Detalle del producto'
+        producto = self.get_object()
+        productosRelacionados = Producto.objects.filter(
+            categoria=producto.categoria
+        ).exclude(id=producto.id)[:4]
         
+        context['recomendacion'] = productosRelacionados
+        
+        return context
+
+
 class ProductList(ListView):
     template_name = 'product/Product.html'
     model = Producto
@@ -66,4 +73,5 @@ class productfertilizerlist(ListView):
         context['descripcion'] = 'Descripcion de las fertilizantes'
         
         return context
+    
     

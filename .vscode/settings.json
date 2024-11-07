@@ -1,3 +1,6 @@
 {
-  "conventionalCommits.scopes": ["mejora en login"]
+  "conventionalCommits.scopes": [
+    "mejora en login",
+    "creacion del modelo de datos"
+  ]
 }

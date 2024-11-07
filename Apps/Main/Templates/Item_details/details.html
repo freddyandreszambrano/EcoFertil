@@ -13,7 +13,7 @@
 <header class="py-5 bg-light border-bottom mb-4">
   <div class="container">
     <div class="text-center my-5">
-      <h1 class="fw-bolder">Welcome to Blog Home!</h1>
+      <h1 class="fw-bolder">{{titulo}}</h1>
       <p class="lead mb-0">
         A Bootstrap 5 starter layout for your next blog homepage
       </p>
@@ -30,123 +30,47 @@
         <a href="#!"
           ><img
             class="card-img-top"
-            src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
-            alt="..."
+            src="{{ producto.imagen.url }}"
+            alt="{{ producto.nombre }}"
         /></a>
         <div class="card-body">
           <div class="small text-muted">January 1, 2023</div>
-          <h2 class="card-title">Featured Post Title</h2>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
-            aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta
-            expedita corporis animi vero voluptate voluptatibus possimus, veniam
-            magni quis!
-          </p>
-          <a class="btn btn-primary" href="#!">Read more →</a>
+          <h2 class="card-title">{{ producto.nombre}}</h2>
+          <p class="card-text">{{producto.descripcion}}</p>
         </div>
       </div>
       <!-- Nested row for non-featured blog posts-->
+      {% for relacionado in recomendacion %}
       <div class="row">
         <div class="col-lg-6">
           <!-- Blog post-->
           <div class="card mb-4">
-            <a href="#!"
+            <a href="{% url 'Main:detail_prenda' relacionado.id %}"
               ><img
                 class="card-img-top"
-                src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                alt="..."
+                src="{{ relacionado.imagen.url }}"
+                alt="{{ relacionado.nombre }}"
             /></a>
             <div class="card-body">
               <div class="small text-muted">January 1, 2023</div>
-              <h2 class="card-title h4">Post Title</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="#!">Read more →</a>
-            </div>
-          </div>
-          <!-- Blog post-->
-          <div class="card mb-4">
-            <a href="#!"
-              ><img
-                class="card-img-top"
-                src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                alt="..."
-            /></a>
-            <div class="card-body">
-              <div class="small text-muted">January 1, 2023</div>
-              <h2 class="card-title h4">Post Title</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="#!">Read more →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <!-- Blog post-->
-          <div class="card mb-4">
-            <a href="#!"
-              ><img
-                class="card-img-top"
-                src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                alt="..."
-            /></a>
-            <div class="card-body">
-              <div class="small text-muted">January 1, 2023</div>
-              <h2 class="card-title h4">Post Title</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="#!">Read more →</a>
-            </div>
-          </div>
-          <!-- Blog post-->
-          <div class="card mb-4">
-            <a href="#!"
-              ><img
-                class="card-img-top"
-                src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                alt="..."
-            /></a>
-            <div class="card-body">
-              <div class="small text-muted">January 1, 2023</div>
-              <h2 class="card-title h4">Post Title</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a
-                laboriosam.
-              </p>
-              <a class="btn btn-primary" href="#!">Read more →</a>
+              <h2 class="card-title h4">{{ relacionado.nombre }}</h2>
+              <p class="card-text">{{ relacionado.descripcion }}</p>
+              <a
+                class="btn btn-primary"
+                href="{% url 'Main:detail_prenda' relacionado.id %}"
+                >Read more →</a
+              >
             </div>
           </div>
         </div>
       </div>
+      {% empty %}
+      <p>No hay productos relacionados para mostrar.</p>
+      {% endfor %}
+
       <!-- Pagination-->
       <nav aria-label="Pagination">
         <hr class="my-0" />
-        {% comment %}
-        <ul class="pagination justify-content-center my-4">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
-              >Newer</a
-            >
-          </li>
-          <li class="page-item active" aria-current="page">
-            <a class="page-link" href="#!">1</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#!">2</a></li>
-          <li class="page-item"><a class="page-link" href="#!">3</a></li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#!">...</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#!">15</a></li>
-          <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-        </ul>
-        {% endcomment %}
       </nav>
     </div>
     <!-- Side widgets-->
@@ -203,5 +127,5 @@
   </div>
 </div>
 {% endblock %} {% block benefits %} {% endblock%} {% block sponsor %}
-{%endblock%} {% block statistics %} {% endblock%} {% block footer %} 
+{%endblock%} {% block statistics %} {% endblock%} {% block footer %}
 {%endblock%}
